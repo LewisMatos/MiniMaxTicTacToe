@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<HTML lang= "en">
+    <head>
+        <meta charset = "utf-8">
+        <title>Lewis Matos</title>
+        <meta  name ="description" content ="TicTacToe project">
+        <meta name="viewport" content="width=device-width, initial-scale=1" >
+        <meta name ="author" content ="Lewis Matos">
+        <link rel="stylesheet" href="main.css">
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+        <script src="game.js"></script>
+    </head>
+    
+    <body class ="body">
+                
+                 <!-- Nav -->
+      <div id="container"> 
+        <div id="topbar"> 
+            <div id = 'welcome' >MiniMax Tic Tac Toe</div>   
+                <div id="logodiv"><a id ="clicklogo"><div id="roundLogo"></div></a>
+                </div>
+        </div>
+      </div>
+                <!--NAV END-->
+        
+         
+                <!--TTT BOARD -->
+      <div id = "TicTacToeBoard">
+                
+                <!-- Grid system using table. Consist of 3 table rows with each row having 3 boxes. Each box has a unique id
+to be able to independetly control each box on the board-->
+        <table class = "Board">
+          <tr = "row_1">
+            <td class ="square" id = "0"  onClick = "clickBox(id)"></td>
+            <td class ="square" id = "1"  onClick = "clickBox(id)"></td>
+            <td class ="square" id = "2"  onClick = "clickBox(id)"></td>
+          </tr>
+          <tr = "row_2">
+            <td class ="square" id = "3"  onClick = "clickBox(id)"></td>
+            <td class ="square" id = "4"  onClick = "clickBox(id)"></td>
+            <td class ="square" id = "5"  onClick = "clickBox(id)"></td>
+          </tr>
+          <tr = "row_3">
+            <td class ="square" id = "6"  onClick = "clickBox(id)"></td>
+            <td class ="square" id = "7"  onClick = "clickBox(id)"></td>
+            <td class ="square" id = "8"  onClick = "clickBox(id)"></td>
+          </tr>
+        </table> 
+            
+      <div id = "playerInfo">
+          <h3 id = "playerName" align = "center">Enter Player Names</h3>
+            <FORM NAME="resetForm" ACTION="" METHOD="GET">
+              <INPUT TYPE="button" id ="reset" NAME="button" Value="ResetGame" onClick="start()"> </INPUT>
+            </FORM>
+               Difficulty:
+				<select id="setLevel" onchange = "setDiffRestart();">
+					<option value=1>Easy</option>
+					<option value=2>Medium</option>
+					<option value=6>Difficult</option>						
+				</select>
+      </div>     
+      </div>
+                   <!--TTT BOARD END -->
+             
+        
+    </body>
+    
+</HTML>
