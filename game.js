@@ -196,5 +196,3 @@ function minimax(state, player, depth) {
         return min_score;
     }
 }
-}
-
