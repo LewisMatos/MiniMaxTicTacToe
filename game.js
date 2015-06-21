@@ -195,8 +195,6 @@ function minimax(state, player, depth) {
         }
         return min_score;
     }
-<<<<<<< HEAD
 }
-=======
 }
->>>>>>> 23c31300088e20737b82d89bce0feff6da837953
+
