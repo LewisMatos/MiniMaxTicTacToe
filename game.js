@@ -1,10 +1,10 @@
 //Global variables
 var difficulty = 1; //Sets how far to search down the tree. higher value increases difficulty.  
-var NUM_ROWS = 3; //Defines the size of the board 3*3 tic tac toe.
-var NUM_COLS = 3;
+var ROWS = 3; //Defines the size of the board 3*3 tic tac toe.
+var COLS = 3;
 var MAX_DEPTH; //Limits depth of search.
 var AI_MOVE; //minimax returns value for max and min score.
-var board = new Array(NUM_ROWS * NUM_COLS); //array for the board.
+var board = new Array(ROWS * COLS); //array for the board.
 var turn = ""; //is set to determine who's turn i tis
 var gameOver = false;
 //X and O images for the board.
