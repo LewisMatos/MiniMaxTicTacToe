@@ -1,68 +1,222 @@
-<!DOCTYPE HTML>
-<HTML lang= "en">
-    <head>
-        <meta charset = "utf-8">
-        <title>Lewis Matos</title>
-        <meta  name ="description" content ="TicTacToe project">
-        <meta name="viewport" content="width=device-width, initial-scale=1" >
-        <meta name ="author" content ="Lewis Matos">
-        <link rel="stylesheet" href="main.css">
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-        <script src="game.js"></script>
-    </head>
-    
-    <body class ="body">
-                
-                 <!-- Nav -->
-      <div id="container"> 
-        <div id="topbar"> 
-            <div id = 'welcome' >MiniMax Tic Tac Toe</div>   
-                <div id="logodiv"><a id ="clicklogo"><div id="roundLogo"></div></a>
-                </div>
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <title>Lewis Matos</title>
+    <meta content="TicTacToe Minimax AI" name="description">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta content="Lewis Matos" name="author">
+    <link href="main.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel=
+    'stylesheet' type='text/css'>
+    <script src="game.js"></script>
+</head>
+
+<body class="body">
+    <!-- Nav -->
+
+
+    <div id="container">
+        <div id="topbar">
+            <div id='welcome'>
+                MiniMax Tic Tac Toe
+            </div>
+
+
+            <div id="logodiv">
+                <a id="clicklogo">
+                <div id="roundLogo">
+                </div></a>
+            </div>
         </div>
-      </div>
-                <!--NAV END-->
-        
-         
-                <!--TTT BOARD -->
-      <div id = "TicTacToeBoard">
-                
-                <!-- Grid system using table. Consist of 3 table rows with each row having 3 boxes. Each box has a unique id
+    </div>
+    <!--NAV END-->
+    <!--TTT BOARD -->
+
+
+    <div id="TicTacToeBoard">
+        <!-- Grid system using table. Consist of 3 table rows with each row having 3 boxes. Each box has a unique id
 to be able to independetly control each box on the board-->
-        <table class = "Board">
-          <tr = "row_1">
-            <td class ="square" id = "0"  onClick = "clickBox(id)"></td>
-            <td class ="square" id = "1"  onClick = "clickBox(id)"></td>
-            <td class ="square" id = "2"  onClick = "clickBox(id)"></td>
-          </tr>
-          <tr = "row_2">
-            <td class ="square" id = "3"  onClick = "clickBox(id)"></td>
-            <td class ="square" id = "4"  onClick = "clickBox(id)"></td>
-            <td class ="square" id = "5"  onClick = "clickBox(id)"></td>
-          </tr>
-          <tr = "row_3">
-            <td class ="square" id = "6"  onClick = "clickBox(id)"></td>
-            <td class ="square" id = "7"  onClick = "clickBox(id)"></td>
-            <td class ="square" id = "8"  onClick = "clickBox(id)"></td>
-          </tr>
-        </table> 
-            
-      <div id = "playerInfo">
-          <h3 id = "playerName" align = "center">Enter Player Names</h3>
-            <FORM NAME="resetForm" ACTION="" METHOD="GET">
-              <INPUT TYPE="button" id ="reset" NAME="button" Value="ResetGame" onClick="start()"> </INPUT>
-            </FORM>
-               Difficulty:
-				<select id="setLevel" onchange = "setDiffRestart();">
-					<option value=1>Easy</option>
-					<option value=2>Medium</option>
-					<option value=6>Difficult</option>						
-				</select>
-      </div>     
-      </div>
-                   <!--TTT BOARD END -->
-             
-        
-    </body>
+
+
+        <table class="Board">
+            <tr>
+                <td class="square" id="0" onclick="clickBox(id)">
+                </td>
+
+                <td class="square" id="1" onclick="clickBox(id)">
+                </td>
+
+                <td class="square" id="2" onclick="clickBox(id)">
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="square" id="3" onclick="clickBox(id)">
+                </td>
+
+                <td class="square" id="4" onclick="clickBox(id)">
+                </td>
+
+                <td class="square" id="5" onclick="clickBox(id)">
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="square" id="6" onclick="clickBox(id)">
+                </td>
+
+                <td class="square" id="7" onclick="clickBox(id)">
+                </td>
+
+                <td class="square" id="8" onclick="clickBox(id)">
+                </td>
+            </tr>
+        </table>
+
+
+        <div id="playerInfo">
+            <h3 id="gameInfo" style="text-align: center">
+            </h3>
+
+
+            <form action="" id="resetForm" method="get" name="resetForm">
+                <input id="reset" name="button" onclick="start()" type="button"
+                value="ResetGame"> 
+            </form>
+        </div>
+
+
+        <div class="difficulty">
+            Change difficulty: <select id="setLevel" onchange=
+            "setDiffRestart();">
+                <option value="1">
+                    Easy
+                </option>
+
+                <option value="2">
+                    Medium
+                </option>
+
+                <option value="6">
+                    Difficult
+                </option>
+            </select>
+        </div>
+    </div>
+    <!--TTT BOARD END -->
     
-</HTML>
+<hr>
+ <div class=WordSection1>
+
+<p class=MsoNormal style='margin-bottom:12.0pt'>&nbsp;</p>
+
+<p class=MsoNormal align=center style='text-align:center'><span
+style='font-size:24.0pt;line-height:105%'>Tic Tac Toe with Artificial
+Intelligence using Minimax search algorithm.</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span
+style='font-size:22.0pt;line-height:105%'>What is Minimax?</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span
+style='font-size:17.0pt;line-height:105%'>Minimax is a recursive algorithm that
+is used &nbsp;to find the most optimal move in a two player&nbsp; zero sum
+perfect information game such as tic tac toe, connect four, checkers and chess.
+&nbsp;Zero sum game means that each player gain or loss is equally balanced by
+the loss or game of the other player. Perfect information just means that the
+game doesn’t have any element of chance like Poker or Yahtzee.</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span
+style='font-size:20.0pt;line-height:105%'>How does it work?</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:.5in'><span
+style='font-size:17.0pt;line-height:105%'>Minimax works by looking ahead
+checking each possible game move and then determining the best move to make by
+a heuristic evaluation function. When you play tic tac toe before you choose a
+square you try to look ahead to see if that move will lead you to a victory or
+block the chance of your opponent getting a victory. You are sort of making a
+search tree in your head and then traversing different paths down the tree to
+find the best move to maximize your chance of winning and minimize the
+opponent’s chance of winning.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:.5in'><span
+style='font-size:17.0pt;line-height:105%'>Minimax works the same way but it can
+look ahead a lot further then a human. Minimax uses a tree in which the top
+level of the tree represents the maximizing player. Minimax max moves in a
+depth first search descending left most. In the image below max player is shown
+as a circle and the min player (AI) is represented as a square. The leaf nodes
+at the bottom of the tree is calculated by a heuristic evaluation function. For
+tic tac toe I chose to represent moves that lead to a maximizing player victory
+to 1 and moves that leads to a minimizing player to win -1. The goal of minimax
+is to minimize its chance of losing and maximizing its chance of winning by
+maximizing the opponent’s chance of losing and minimizing the opponents chance
+of winning. &nbsp;Searching all moves down a tree is achievable in tic tac toe
+because the amount of possible moves is under 300,000 but for a game like chess
+it takes 10^123 known as the Shannon number. There are more moves in chess then
+there is atoms 10^80 in the observable universe!</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:.5in'>&nbsp;</p>
+
+<p class=MsoNormal align=center style='text-align:center;text-indent:.5in'><img
+width=600 height=471
+src="image001.png"
+></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span
+style='font-size:24.0pt;line-height:105%'>How to make Minimax more efficient.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:.5in'><span
+style='font-size:14.0pt;line-height:105%'>Although Minimax checks for the best
+possible move it needs to check every node of the tree to find the best
+possible move. Alpha-beta pruning is an algorithm that can be applied to
+minimax to decrease the amount of nodes it evaluates down the search tree. For
+alpha beta-pruning,  Alpha represents the maximum score and beta represents the
+minimum score. Alpha/Beta are both initialized with the worst possible score
+for both players. We use both Alpha and Beta to prun the tree by checking to
+see if alpha is greater or equal to beta.</span></p>
+
+<p class=MsoNormal align=center style='text-align:center;text-indent:.5in'><img
+width=825 height=432 src=image002.png></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:.5in'>&nbsp;</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:.5in'>&nbsp;</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:.5in'>&nbsp;</p>
+
+<p class=MsoNormal style='text-indent:.5in'><b><span style='font-size:14.0pt;
+line-height:105%'>REFERENCES &amp; RESOURCES</span></b></p>
+
+<p class=MsoNormal style='text-indent:.5in'><span style='font-size:14.0pt;
+line-height:105%'>&quot;Beej's Bit Bucket.&quot; Minimax. Web. 20 June 2015.</span></p>
+
+<p class=MsoNormal style='text-indent:.5in'><span style='font-size:14.0pt;
+line-height:105%'>&quot;CSCI 6350 Artificial Intelligence: Minimax and
+Alpha-Beta Pruning Algorithms and Psuedocodes.&quot; YouTube. YouTube, n.d.
+Web. 20 June 2015.</span></p>
+
+<p class=MsoNormal style='text-indent:.5in'><span style='font-size:14.0pt;
+line-height:105%'>Wikipedia. Wikimedia Foundation, n.d. Web. 20 June 2015.</span></p>
+
+<p class=MsoNormal style='text-indent:.5in'><span style='font-size:14.0pt;
+line-height:105%'>&quot;An Exhaustive Explanation of Minimax, a Staple AI
+Algorithm.&quot; An Exhaustive Explanation of Minimax, a Staple AI Algorithm.
+N.p., n.d. Web. 20 June 2015.</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:.5in'><span
+style='font-size:14.0pt;line-height:105%'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:.5in'><span
+style='font-size:14.0pt;line-height:105%'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:.5in'>&nbsp;</p>
+
+</div>
+
+    
+</body>
+</html>
