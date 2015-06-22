@@ -26,10 +26,10 @@ function setDifficulty() {
 function randTurn() {
     if (Math.random() < 0.5) {
         turn = "X";
-        document.getElementById("gameInfo").innerHTML = "Human starts first";
+        document.getElementById("gameInfo").innerHTML = "You start first";
     } else {
         turn = "O";
-        document.getElementById("gameInfo").innerHTML = "AI started first";
+        document.getElementById("gameInfo").innerHTML = "Computer started first";
         clickBox(99); //If computer starts have it call clickbox to play the game. 99 is just a default value. 
     }
 }
@@ -71,7 +71,7 @@ function clickBox(id) {
             if (full(board)) { //After played made a move check if the board is full if so game ends in a tie.
                 document.getElementById("gameInfo").innerHTML = "Game Tied";
             } else if (wins(board, "X")) { //If game isn't full then check for a winner by checking all winning possibilities.
-                document.getElementById("gameInfo").innerHTML = "Player Won!!!";
+                document.getElementById("gameInfo").innerHTML = "You Won!!!";
             } else {//If player hasn't won then the computer calls minimax to check for best possible move.
                 MAX_DEPTH = difficulty; //sets the limit on how far the computer would look ahead
                 minimax(board, "O", 0); //Minimax looks for the best possible move for AI. Returns AI_MOVE.
