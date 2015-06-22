@@ -69,10 +69,8 @@ function clickBox(id) {
                 turn = "O";
             }
             if (full(board)) { //After played made a move check if the board is full if so game ends in a tie.
-                gameOver = true;
                 document.getElementById("gameInfo").innerHTML = "Game Tied";
             } else if (wins(board, "X")) { //If game isn't full then check for a winner by checking all winning possibilities.
-                gameOver = true;
                 document.getElementById("gameInfo").innerHTML = "Player Won!!!";
             } else {//If player hasn't won then the computer calls minimax to check for best possible move.
                 MAX_DEPTH = difficulty; //sets the limit on how far the computer would look ahead
@@ -82,11 +80,9 @@ function clickBox(id) {
                 document.getElementById(AI_MOVE).innerHTML = "<img src =" + O.src +">";
                 if (wins(board, "O")) { //Check win for AI
                     document.getElementById("gameInfo").innerHTML = "Computer WON!!!";
-                    gameOver = true;
                 }
                 if (full(board)) { //Check for full board again but this time for AI.
                     document.getElementById("gameInfo").innerHTML = "Game Tied";
-                    gameOver = true;
 
                 }
             }
@@ -122,6 +118,7 @@ function wins(state, player) {
             (state[2] == player && state[5] == player && state[8] == player) ||
             (state[0] == player && state[4] == player && state[8] == player) ||
             (state[2] == player && state[4] == player && state[6] == player)) {
+            gameOver = true;
             return true;
         } else {
             return false;
@@ -131,6 +128,7 @@ function wins(state, player) {
 // Given a state of the board, returns true if the board is full or a player has won. 
 function terminal(state) {
         if (full(state) || wins(state, "X") || wins(state, "O")) {
+         gameOver = true;
             return true;
         } else return false;
     }
