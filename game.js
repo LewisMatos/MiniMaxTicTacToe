@@ -129,6 +129,7 @@ function wins(state, player) {
 // Given a state of the board, returns true if the board is full or a player has won. 
 function terminal(state) {
         if (full(state) || wins(state, "X") || wins(state, "O")) {
+             gameOver = true;
             return true;
         } else return false;
     }
