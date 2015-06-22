@@ -119,7 +119,6 @@ function wins(state, player) {
             (state[2] == player && state[5] == player && state[8] == player) ||
             (state[0] == player && state[4] == player && state[8] == player) ||
             (state[2] == player && state[4] == player && state[6] == player)) {
-            gameOver = true;
             return true;
         } else {
             return false;
