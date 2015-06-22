@@ -69,6 +69,7 @@ function clickBox(id) {
                 turn = "O";
             }
             if (full(board)) { //After played made a move check if the board is full if so game ends in a tie.
+                gameOver = true;
                 document.getElementById("gameInfo").innerHTML = "Game Tied";
             } else if (wins(board, "X")) { //If game isn't full then check for a winner by checking all winning possibilities.
                 gameOver = true;
@@ -84,6 +85,7 @@ function clickBox(id) {
                     document.getElementById("gameInfo").innerHTML = "Computer WON!!!";
                 }
                 if (full(board)) { //Check for full board again but this time for AI.
+                    gameOver = true;
                     document.getElementById("gameInfo").innerHTML = "Game Tied";
 
                 }
@@ -105,7 +107,6 @@ function get_available_moves(state) {
 //Checks the state of the board and returns true if there are no longer any moves to be made. 
 function full(state) {
         if (get_available_moves(state).length == 0) {
-            gameOver = true;
             return true;
         } else return false;
     }
