@@ -69,10 +69,8 @@ function clickBox(id) {
                 turn = "O";
             }
             if (full(board)) { //After played made a move check if the board is full if so game ends in a tie.
-                               gameOver = true;
                 document.getElementById("gameInfo").innerHTML = "Game Tied";
             } else if (wins(board, "X")) { //If game isn't full then check for a winner by checking all winning possibilities.
-                            gameOver = true;
                 document.getElementById("gameInfo").innerHTML = "You Won!!!";
             } else {//If player hasn't won then the computer calls minimax to check for best possible move.
                 MAX_DEPTH = difficulty; //sets the limit on how far the computer would look ahead
@@ -81,13 +79,9 @@ function clickBox(id) {
                 turn = "X";
                 document.getElementById(AI_MOVE).innerHTML = "<img src =" + O.src +">";
                 if (wins(board, "O")) { //Check win for AI
-                            gameOver = true;
-
                     document.getElementById("gameInfo").innerHTML = "Computer WON!!!";
                 }
                 if (full(board)) { //Check for full board again but this time for AI.
-                            gameOver = true;
-
                     document.getElementById("gameInfo").innerHTML = "Game Tied";
 
                 }
@@ -109,6 +103,7 @@ function get_available_moves(state) {
 //Checks the state of the board and returns true if there are no longer any moves to be made. 
 function full(state) {
         if (get_available_moves(state).length == 0) {
+            gameOver = true;
             return true;
         } else return false;
     }
@@ -124,6 +119,7 @@ function wins(state, player) {
             (state[2] == player && state[5] == player && state[8] == player) ||
             (state[0] == player && state[4] == player && state[8] == player) ||
             (state[2] == player && state[4] == player && state[6] == player)) {
+            gameOver = true;
             return true;
         } else {
             return false;
