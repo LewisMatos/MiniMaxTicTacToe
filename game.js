@@ -71,6 +71,7 @@ function clickBox(id) {
             if (full(board)) { //After played made a move check if the board is full if so game ends in a tie.
                 document.getElementById("gameInfo").innerHTML = "Game Tied";
             } else if (wins(board, "X")) { //If game isn't full then check for a winner by checking all winning possibilities.
+                gameOver = true;
                 document.getElementById("gameInfo").innerHTML = "You Won!!!";
             } else {//If player hasn't won then the computer calls minimax to check for best possible move.
                 MAX_DEPTH = difficulty; //sets the limit on how far the computer would look ahead
@@ -79,6 +80,7 @@ function clickBox(id) {
                 turn = "X";
                 document.getElementById(AI_MOVE).innerHTML = "<img src =" + O.src +">";
                 if (wins(board, "O")) { //Check win for AI
+                    gameOver = true;
                     document.getElementById("gameInfo").innerHTML = "Computer WON!!!";
                 }
                 if (full(board)) { //Check for full board again but this time for AI.
@@ -128,7 +130,6 @@ function wins(state, player) {
 // Given a state of the board, returns true if the board is full or a player has won. 
 function terminal(state) {
         if (full(state) || wins(state, "X") || wins(state, "O")) {
-             gameOver = true;
             return true;
         } else return false;
     }
