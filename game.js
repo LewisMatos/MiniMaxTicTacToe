@@ -69,12 +69,11 @@ function clickBox(id) {
                 turn = "O";
             }
             if (full(board)) { //After played made a move check if the board is full if so game ends in a tie.
+                               gameOver = true;
                 document.getElementById("gameInfo").innerHTML = "Game Tied";
-                            gameOver = true;
-
             } else if (wins(board, "X")) { //If game isn't full then check for a winner by checking all winning possibilities.
-                document.getElementById("gameInfo").innerHTML = "You Won!!!";
                             gameOver = true;
+                document.getElementById("gameInfo").innerHTML = "You Won!!!";
             } else {//If player hasn't won then the computer calls minimax to check for best possible move.
                 MAX_DEPTH = difficulty; //sets the limit on how far the computer would look ahead
                 minimax(board, "O", 0); //Minimax looks for the best possible move for AI. Returns AI_MOVE.
