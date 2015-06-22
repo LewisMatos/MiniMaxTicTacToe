@@ -26,10 +26,10 @@ function setDifficulty() {
 function randTurn() {
     if (Math.random() < 0.5) {
         turn = "X";
-        document.getElementById("gameInfo").innerHTML = "Human Start";
+        document.getElementById("gameInfo").innerHTML = "Human starts first";
     } else {
         turn = "O";
-        document.getElementById("gameInfo").innerHTML = "AI Start";
+        document.getElementById("gameInfo").innerHTML = "AI started first";
         clickBox(99); //If computer starts have it call clickbox to play the game. 99 is just a default value. 
     }
 }
