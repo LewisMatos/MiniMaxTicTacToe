@@ -1,20 +1,23 @@
 //Global variables
-var difficulty = 1; //Sets how far to search down the tree. higher value increases difficulty.  
-var ROWS = 3; //Defines the size of the board 3*3 tic tac toe.
-var COLS = 3;
-var MAX_DEPTH; //Limits depth of search.
-var AI_MOVE; //minimax returns value for max and min score.
-var board = new Array(ROWS * COLS); //array for the board.
-var turn = ""; //is set to determine who's turn i tis
-var gameOver = false;
-//X and O images for the board.
-var X = new Image();
-var O = new Image();
-X.src = "tic-tac-toe-X.png";
-O.src = "tic-tac-toe-O.png";
+
+var ROWS = 3, //Defines the size of the board 3*3 tic tac toe.
+    COLS = 3,
+    board = new Array(ROWS * COLS), //array for the board.
+    X = new Image(),
+    O = new Image();
+
+var difficulty = 1, //Sets how far to search down the tree. higher value increases difficulty.
+    MAX_DEPTH, //Limits depth of search.
+    AI_MOVE, //minimax returns value for max and min score.
+    turn = "", //is set to determine who's turn it is
+    gameOver = false;
+
+
 
 /*This listen to see if the page is fully loaded and then immediately calls the start function.*/
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
+    X.src = "public/images/tic-tac-toe-X.png";
+    O.src = "public/images/tic-tac-toe-O.png";
     start();
 }, false);
 
@@ -34,52 +37,56 @@ function randTurn() {
     }
 }
 
-function playerTurn(player) {
-        document.getElementById("gameInfo").innerHTML = player + " turn";
-    }
+function playerTurn(turn) {
+    player = turn == "X" ? "Player" : "Computer";
+    document.getElementById("gameInfo").innerHTML = player + " turn";
+}
 
 //Gets called by eventListener when page is loaded and starts the game.
 function start() {
-        initializeBoard();
-        randTurn();
-    }
+    initializeBoard();
+    randTurn();
+}
 
 //When a user selects a different difficulty the board is reset to start with that difficulty level.
 function setDiffRestart() {
-        setDifficulty();
-        start();
-    }
+    setDifficulty();
+    start();
+}
 
 //Resets the board by initializing both board and table data with empty string.
 function initializeBoard() {
-        for (var i = 0; i < board.length; i++) {
-            board[i] = "";
-            document.getElementById(i).innerHTML = "";
-            gameOver = false;
-        }
+    for (var i = 0; i < board.length; i++) {
+        board[i] = "";
+        document.getElementById(i).innerHTML = "";
+        gameOver = false;
     }
+}
 /* Function clickBox(id) get's called when a player clicks a box in the table. If it's players turn and the box is empty an X is filled in that particular box else computer plays and minimax algorithm is called to check the best move for Comp.*/
 function clickBox(id) {
-        var pos = parseInt(id);
-        if ((board[pos] == "" || pos == 99) && !gameOver) { //if user clicked a square continue if that square is empty or if AI started first and the game can't be over. Once game is over locks the board.
-            if (turn == "X") {
-                playerTurn("Player");
-                document.getElementById(id).innerHTML = "<img src =" + X.src +">";
-                board[pos] = "X";
-                turn = "O";
-            }
-            if (full(board)) { //After played made a move check if the board is full if so game ends in a tie.
-                gameOver = true;
-                document.getElementById("gameInfo").innerHTML = "Game Tied";
-            } else if (wins(board, "X")) { //If game isn't full then check for a winner by checking all winning possibilities.
-                gameOver = true;
-                document.getElementById("gameInfo").innerHTML = "You Won!!!";
-            } else {//If player hasn't won then the computer calls minimax to check for best possible move.
-                MAX_DEPTH = difficulty; //sets the limit on how far the computer would look ahead
-                minimax(board, "O", 0); //Minimax looks for the best possible move for AI. Returns AI_MOVE.
-                board[AI_MOVE] = "O"; //Select the square that AI choose.
-                turn = "X";
-                document.getElementById(AI_MOVE).innerHTML = "<img src =" + O.src +">";
+    var pos = parseInt(id);
+    if ((board[pos] == "" || pos == 99) && !gameOver) { //if user clicked a square continue if that square is empty or if AI started first and the game can't be over. Once game is over locks the board.
+        if (turn == "X") {
+            document.getElementById(id).innerHTML = "<img src =" + X.src + ">";
+            board[pos] = "X";
+            turn = "O";
+            playerTurn(turn);
+        }
+        if (full(board)) { //After player made a move check if the board is full if so game ends in a tie.
+            gameOver = true;
+            document.getElementById("gameInfo").innerHTML = "Game Tied";
+        } else if (wins(board, "X")) { //If game isn't full then check for a winner by checking all winning possibilities.
+            gameOver = true;
+            document.getElementById("gameInfo").innerHTML = "You Won!!!";
+        } else { //If player hasn't won then the computer calls minimax to check for best possible move.
+            MAX_DEPTH = difficulty; //sets the limit on how far the computer would look ahead
+            minimax(board, "O", 0); //Minimax looks for the best possible move for AI. Returns AI_MOVE.
+            board[AI_MOVE] = "O"; //Select the square that AI choose.
+            turn = "X";
+
+            setTimeout(function () { //adds a half second delay before comp displays it's move.
+                playerTurn(turn);
+                document.getElementById(AI_MOVE).innerHTML = "<img src =" + O.src + ">";
                 if (wins(board, "O")) { //Check win for AI
                     gameOver = true;
                     document.getElementById("gameInfo").innerHTML = "Computer WON!!!";
@@ -89,62 +96,63 @@ function clickBox(id) {
                     document.getElementById("gameInfo").innerHTML = "Game Tied";
 
                 }
-            }
+            }, 500);
         }
     }
+}
 
 //Returns all available moves left on the current board.
 function get_available_moves(state) {
-        var all_moves = new Array();
-        for (var i = 0; i < board.length; i++) {
-            if (state[i] == "") {
-                all_moves.push(i);
-            }
+    var all_moves = [];
+    for (var i = 0; i < board.length; i++) {
+        if (state[i] == "") {
+            all_moves.push(i);
         }
-        return all_moves
     }
+    return all_moves
+}
 
 //Checks the state of the board and returns true if there are no longer any moves to be made. 
 function full(state) {
-        if (get_available_moves(state).length == 0) {
-            return true;
-        } else return false;
-    }
+    if (get_available_moves(state).length == 0) {
+        return true;
+    } else return false;
+}
 
-//Takes a board state and checks to see if AI or human won the match.
+//Takes a board state and checks to see if AI or human won the match. I could improve this by creating a matrix with all possible win combinations and iterating over the board.
 function wins(state, player) {
-        if (
-            (state[0] == player && state[1] == player && state[2] == player) ||
-            (state[3] == player && state[4] == player && state[5] == player) ||
-            (state[6] == player && state[7] == player && state[8] == player) ||
-            (state[0] == player && state[3] == player && state[6] == player) ||
-            (state[1] == player && state[4] == player && state[7] == player) ||
-            (state[2] == player && state[5] == player && state[8] == player) ||
-            (state[0] == player && state[4] == player && state[8] == player) ||
-            (state[2] == player && state[4] == player && state[6] == player)) {
-            return true;
-        } else {
-            return false;
-        }
+    if (
+        (state[0] == player && state[1] == player && state[2] == player) ||
+        (state[3] == player && state[4] == player && state[5] == player) ||
+        (state[6] == player && state[7] == player && state[8] == player) ||
+        (state[0] == player && state[3] == player && state[6] == player) ||
+        (state[1] == player && state[4] == player && state[7] == player) ||
+        (state[2] == player && state[5] == player && state[8] == player) ||
+        (state[0] == player && state[4] == player && state[8] == player) ||
+        (state[2] == player && state[4] == player && state[6] == player)) {
+        return true;
+    } else {
+        return false;
     }
+}
 
 // Given a state of the board, returns true if the board is full or a player has won. 
 function terminal(state) {
-        if (full(state) || wins(state, "X") || wins(state, "O")) {
-            return true;
-        } else return false;
-    }
+    if (full(state) || wins(state, "X") || wins(state, "O")) {
+        return true;
+    } else return false;
+}
 
-//If player has a winning state assign a score of 1 else if AI has a winning state apply a score of -1. AI wants to maxamize the human chance of lossing.
+//If player has a winning state assign a score of 1 else if AI has a winning state apply a score of -1. AI wants to maximize the players chance of lossing.
 function score(state) {
-        if (wins(state, "X")) {
-            return 1;
-        } else if (wins(state, "O")) {
-            return -1;
-        } else {
-            return 0;
-        }
+    if (wins(state, "X")) {
+        return 1;
+    } else if (wins(state, "O")) {
+        return -1;
+    } else {
+        return 0;
     }
+}
 
 // Finds the best decision for the AI. Returns best value for max and min player. 
 function minimax(state, player, depth) {
@@ -156,23 +164,23 @@ function minimax(state, player, depth) {
     var min_score; //mininizing player score
     var scores = []; //keeps track of score of current board state
     var moves = []; //keeps track of all available moves of current board state.
-    var opponent; 
-    
-    if (player == "X"){ 
-        opponent = "O";}
-    else 
+    var opponent;
+
+    if (player == "X") {
+        opponent = "O";
+    } else
         opponent = "X";
-    
+
     var successors = get_available_moves(state); //get's all the available moves from a given board.
-    
+
     for (var s in successors) {
         var possible_state = state; //makes a copy of the current board
         possible_state[successors[s]] = player; //sets player in all possible squares in current board
         scores.push(minimax(possible_state, opponent, depth + 1)); //call minimax with new board of opponents states and increase the height of tree by 1. Add it to score array.
-        possible_state[successors[s]] = ""; //clear playes move from the board
+        possible_state[successors[s]] = ""; //clear players move from the board
         moves.push(successors[s]); //keeps track of moves made
     }
-    
+
     //If a human is playing then we check to see what moves it will win the game 
     if (player == "X") {
         AI_MOVE = moves[0]; //set AI_Move to the first move
