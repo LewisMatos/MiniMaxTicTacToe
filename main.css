@@ -61,6 +61,7 @@
     height:600px;
     display:table;
     margin:0 auto;
+    cursor:pointer;
     font-family:'Open Sans',sans-serif
 }
 

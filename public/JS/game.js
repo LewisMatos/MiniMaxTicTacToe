@@ -10,7 +10,8 @@ var difficulty = 1, //Sets how far to search down the tree. higher value increas
     MAX_DEPTH, //Limits depth of search.
     AI_MOVE, //minimax returns value for max and min score.
     turn = "", //is set to determine who's turn it is
-    gameOver = false;
+    randMove = false;
+gameOver = false;
 
 
 
@@ -79,12 +80,11 @@ function clickBox(id) {
             gameOver = true;
             document.getElementById("gameInfo").innerHTML = "You Won!!!";
         } else { //If player hasn't won then the computer calls minimax to check for best possible move.
-            MAX_DEPTH = difficulty; //sets the limit on how far the computer would look ahead
-            minimax(board, "O", 0); //Minimax looks for the best possible move for AI. Returns AI_MOVE.
-            board[AI_MOVE] = "O"; //Select the square that AI choose.
-            turn = "X";
-
             setTimeout(function () { //adds a half second delay before comp displays it's move.
+                MAX_DEPTH = difficulty; //sets the limit on how far the computer would look ahead
+                minimax(board, "O", 0); //Minimax looks for the best possible move for AI. Returns AI_MOVE.
+                board[AI_MOVE] = "O"; //Select the square that AI choose.
+                turn = "X";
                 playerTurn(turn);
                 document.getElementById(AI_MOVE).innerHTML = "<img src =" + O.src + ">";
                 if (wins(board, "O")) { //Check win for AI
@@ -94,9 +94,8 @@ function clickBox(id) {
                 if (full(board)) { //Check for full board again but this time for AI.
                     gameOver = true;
                     document.getElementById("gameInfo").innerHTML = "Game Tied";
-
                 }
-            }, 500);
+            }, 200);
         }
     }
 }
@@ -160,17 +159,12 @@ function minimax(state, player, depth) {
     if (depth >= MAX_DEPTH || terminal(state)) {
         return score(state);
     }
+
     var max_score; //maximizing player score
     var min_score; //mininizing player score
     var scores = []; //keeps track of score of current board state
     var moves = []; //keeps track of all available moves of current board state.
-    var opponent;
-
-    if (player == "X") {
-        opponent = "O";
-    } else
-        opponent = "X";
-
+    var opponent = player == "X" ? "O" : "X";
     var successors = get_available_moves(state); //get's all the available moves from a given board.
 
     for (var s in successors) {
@@ -181,7 +175,7 @@ function minimax(state, player, depth) {
         moves.push(successors[s]); //keeps track of moves made
     }
 
-    //If a human is playing then we check to see what moves it will win the game 
+    //If a human is playing then we check to see what moves it will take to win the game 
     if (player == "X") {
         AI_MOVE = moves[0]; //set AI_Move to the first move
         max_score = scores[0]; //set max score to the first score
