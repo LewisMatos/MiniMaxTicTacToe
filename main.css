@@ -87,7 +87,8 @@
 }
 .square:hover {
     cursor:pointer;
-    background-color:rgb(77.7%, 74%, 74%);
+    background-color:rgb(94.8%, 83.7%, 77.7%);
+    opacity: .5;
 }
 
 #playerInfo {
