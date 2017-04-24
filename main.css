@@ -65,6 +65,12 @@
     font-family:'Open Sans',sans-serif
 }
 
+.Board > td {
+    width:200px;
+    height:200px;
+    background-color:grey;
+}
+
 .square {
     border:1px solid #000;
     background:#FFF;
@@ -78,6 +84,10 @@
 .square > img {
     width:100px;
     height:100px
+}
+.square:hover {
+    cursor:pointer;
+    background-color:rgb(77.7%, 74%, 74%);
 }
 
 #playerInfo {

@@ -4,7 +4,6 @@
 
 <head>
     <meta charset="utf-8">
-
     <title>Lewis Matos</title>
     <meta content="TicTacToe Minimax AI" name="description">
     <meta content="width=device-width, initial-scale=1" name="viewport">
@@ -116,47 +115,28 @@ intelligence using Minimax search algorithm.</span></p>
 
         <p class=MsoNormal align=center style='text-align:center'><span style='font-size:22.0pt;line-height:105%'>What is Minimax?</span></p>
 
-        <p class=MsoNormal align=center style='text-align:center'><span style='font-size:14.0pt;line-height:105%'>Minimax is a recursive algorithm that
+        <p class=MsoNormal align=center style='text-align:center;;max-width:80%;margin:0 auto;'><span style='font-size:14.0pt;line-height:105%;'>Minimax is a recursive algorithm that
 is used &nbsp;to find the most optimal move in a two player&nbsp; zero sum
 perfect information game such as tic tac toe, connect four, checkers and chess.
-&nbsp;Zero sum game means that each player gain or loss is equally balanced by
-the loss or game of the other player. Perfect information just means that the
+&nbsp;Zero sum game means that the score of each player sums to 0. Let's say the first player has a score of 1 then the second player gets a score of -1. Perfect information just means that the
 game doesn’t have any element of chance like Poker or Yahtzee.</span></p>
 
         <p class=MsoNormal align=center style='text-align:center'><span style='font-size:20.0pt;line-height:105%'>How does it work?</span></p>
 
-        <p class=MsoNormal style='text-align:justify;text-indent:.5in'><span style='font-size:14.0pt;line-height:105%'>Minimax works by looking ahead
-checking each possible game move and then determining the best move to make by
+        <p class=MsoNormal style='text-align:justify;text-indent:.5in;max-width:80%;margin:0 auto;'><span style='font-size:14.0pt;line-height:105%;'>Minimax algorithm works by looking ahead
+checking all possible moves and then determining the best move to make by
 a heuristic evaluation function. When you play tic tac toe before you choose a
 square you try to look ahead to see if that move will lead you to a victory or
 block the chance of your opponent getting a victory. You are sort of making a
 search tree in your head and then traversing different paths down the tree to
 find the best move to maximize your chance of winning and minimize the
 opponent’s chance of winning.</span></p>
-
-        <p class=MsoNormal style='text-align:justify;text-indent:.5in'><span style='font-size:14.0pt;line-height:105%'>Minimax works the same way but it can
-look ahead a lot further then a human. Minimax uses a tree in which the top
-level of the tree represents the maximizing player. Minimax max moves in a
-depth first search descending left most. In the image below max player is shown
-as a circle and the min player (AI) is represented as a square. The leaf nodes
-at the bottom of the tree is calculated by a heuristic evaluation function. For
-tic tac toe I chose to represent moves that lead to a maximizing player victory
-to 1 and moves that leads to a minimizing player to win -1. The goal of minimax
-is to minimize its chance of losing and maximizing its chance of winning by
-maximizing the opponent’s chance of losing and minimizing the opponents chance
-of winning. &nbsp;Searching all moves down a tree is achievable in tic tac toe
-because the amount of possible moves is under 300,000 but for a game like chess
-it takes 10^123 known as the Shannon number. There are more moves in chess then
-there is atoms 10^80 in the observable universe!</span></p>
+<br>
 
         <div align=center>
 
             <table class=MsoTable15Plain4 border=0 cellspacing=0 cellpadding=0 style='border-collapse:collapse'>
                 <tr>
-                    <td width=312 valign=top style='width:233.75pt;padding:0in 5.4pt 0in 5.4pt'>
-                        <h1><b><img width=701 height=410 id="Picture 5"
-  src="public/images/701px-Minimax.svg.png"></b></h1>
-                    </td>
                     <td width=312 valign=top style='width:233.75pt;padding:0in 5.4pt 0in 5.4pt'>
                         <h1><img width=600 height=471 src='public/images/image001.png' align=left hspace=12></h1>
                     </td>
@@ -164,6 +144,20 @@ there is atoms 10^80 in the observable universe!</span></p>
             </table>
             <br>
         </div>
+        <p class=MsoNormal style='text-align:justify;text-indent:.5in;max-width:80%;margin:0 auto;'><span style='font-size:14.0pt;line-height:105%;'>Minimax works the same way but it can
+look ahead a lot further then a human. Minimax uses a tree in which the top
+level of the tree represents the maximizing player. Minimax max moves in a
+depth first search. In the image below the max player is shown
+as a circle and the min player (AI) is represented as a square. The leaf nodes
+at the bottom of the tree is calculated by a heuristic evaluation function. For
+tic tac toe I chose to represent moves that lead to a maximizing player victory
+to 1 and moves that leads to a minimizing player to win -1. The algorithm is minimizing 
+the opponents chance of winning and maximizing it's chance of winning.. &nbsp;
+Searching all moves down a tree is achievable in tic tac toebecause the 
+amount of possible moves is under 300,000 but for a game like chess
+it takes 10^123 known as the Shannon number. There are more moves in chess then
+there are atoms 10^80 in the observable universe!</span></p>
+
         
         <p class=MsoNormal align=center style='text-align:center'><span style='font-size:20.0pt;line-height:105%'>Check out this great video on Game Theory from Computerphile</span></p>
 
@@ -179,7 +173,7 @@ there is atoms 10^80 in the observable universe!</span></p>
         
         <p class=MsoNormal align=center style='text-align:center'><span style='font-size:24.0pt;line-height:105%'>How to make Minimax more efficient.</span></p>
 
-        <p class=MsoNormal style='text-align:justify;text-indent:.5in'><span style='font-size:14.0pt;line-height:105%'>Although Minimax checks for the best
+        <p class=MsoNormal style='text-align:justify;text-indent:.5in;max-width:80%;margin:0 auto;'><span style='font-size:14.0pt;line-height:105%'>Although Minimax checks for the best
 possible move it needs to check every node of the tree to find the best
 possible move. Alpha-beta pruning is an algorithm that can be applied to
 minimax to decrease the amount of nodes it evaluates down the search tree. For

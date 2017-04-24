@@ -11,7 +11,7 @@ var difficulty = 1, //Sets how far to search down the tree. higher value increas
     AI_MOVE, //minimax returns value for max and min score.
     turn = "", //is set to determine who's turn it is
     randMove = false;
-gameOver = false;
+    gameOver = false;
 
 
 
