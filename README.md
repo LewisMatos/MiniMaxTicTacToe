@@ -21,7 +21,7 @@ How does it work?
 
 Minimax algorithm works by looking ahead checking all possible moves and then determining the best move to make by a heuristic evaluation function. When you play tic tac toe before you choose a square you try to look ahead to see if that move will lead you to a victory or block the chance of your opponent getting a victory. You are sort of making a search tree in your head and then traversing different paths down the tree to find the best move to maximize your chance of winning and minimize the opponent’s chance of winning.
 
-
+https://lewismatos.github.io/MiniMaxTicTacToe/public/images/image001.png
 
 
 Minimax works the same way but it can look ahead a lot further then a human. Minimax uses a tree in which the top level of the tree represents the maximizing player. Minimax max moves in a depth first search. In the image below the max player is shown as a circle and the min player (AI) is represented as a square. The leaf nodes at the bottom of the tree is calculated by a heuristic evaluation function. For tic tac toe I chose to represent moves that lead to a maximizing player victory to 1 and moves that leads to a minimizing player to win -1. The algorithm is minimizing the opponents chance of winning and maximizing it's chance of winning..   Searching all moves down a tree is achievable in tic tac toebecause the amount of possible moves is under 300,000 but for a game like chess it takes 10^123 known as the Shannon number. There are more moves in chess then there are atoms 10^80 in the observable universe!
