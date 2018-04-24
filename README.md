@@ -28,7 +28,7 @@ Minimax works the same way but it can look ahead a lot further then a human. Min
 
 Check out this great video on Game Theory from Computerphile
 
-
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/5oXyibEgJr0/0.jpg)](https://www.youtube.com/watch?v=5oXyibEgJr0)
 
 Grab code from GitHub
 
@@ -45,7 +45,7 @@ Although Minimax checks for the best possible move it needs to check every node 
  
 
  
-
+![](https://lewismatos.github.io/MiniMaxTicTacToe/public/images/image002.png)
  
 
 REFERENCES & RESOURCES
